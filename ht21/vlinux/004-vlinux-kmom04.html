@@ -1,0 +1,239 @@
+<!doctype html>
+<html lang="sv">
+<meta charset="utf-8" />
+<title>vlinux kmom04</title>
+
+<!-- Mithril HTML Slideshow styles -->
+<link href="../../css/mithril-slideshow.css" rel="stylesheet" />
+
+<!-- Code formatting using highlight.js -->
+<link rel="stylesheet" href="../../css/default.css">
+<link rel="stylesheet" href="../../css/tomorrow.css">
+<script src="../../js/highlight.pack.js"></script>
+
+<!-- Text formatting using Markdown through showdown.js -->
+<script src="../../js/showdown.min.js"></script>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu+Mono&display=swap');
+h1 {
+    border-bottom: 2px solid lime;
+}
+#slide {
+    font-family: 'Ubuntu Mono', monospace;
+    color: lime;
+}
+
+ul {
+    list-style-type: none;
+}
+
+li:before {
+    content: "$ ";
+}
+
+ul li ul li:before {
+    content: "- ";
+}
+</style>
+
+
+
+<!-- Here comes the slides in order -->
+<script data-role="slide" data-markdown type="text/html">
+#vlinux kmom04
+###Kenneth Lewenhagen, dbwebb
+</script>
+
+
+
+<!-- Slide -->
+<script data-role="slide" data-markdown type="text/html">
+#Agenda
+
+* 3-veckorsupprop
+* Dockerfile kommandon (instruktioner)
+* docker run command
+* Kursmomentet
+
+
+</script>
+
+
+
+<!-- Slide -->
+<script data-role="slide" data-markdown type="text/html">
+#Dockerfile kommandon
+
+* FROM
+* RUN
+* CMD / ENTRYPOINT
+* COPY / ADD
+* (ENV)
+
+</script>
+
+
+
+<!-- Slide -->
+<script data-role="slide" data-markdown type="text/html">
+#Olika former
+
+RUN / CMD / ENTRYPOINT
+* exec form
+* shell form
+
+
+</script>
+
+
+
+<!-- Slide -->
+<script data-role="slide" data-markdown type="text/html">
+#exec form
+
+* Föredra för CMD/ENTRYPOINT
+<pre><code>&lt;instruction&gt; ["executable", "param1", "param2", ...]</code></pre>
+
+</script>
+
+
+
+<!-- Slide -->
+<script data-role="slide" data-markdown type="text/html">
+#shell form
+
+<pre><code>&lt;instruction&gt; &lt;command&gt;</code></pre>
+
+</script>
+
+
+
+<!-- Slide -->
+<script data-role="slide" data-markdown type="text/html">
+<pre>
+<code>FROM debian:stretch-slim
+
+RUN apt-get update && \
+    apt-get -y install apache2
+
+CMD apachectl -D FOREGROUND</code>
+</pre>
+</script>
+
+
+
+<!-- Slide -->
+<script data-role="slide" data-markdown type="text/html">
+Exempel på de olika formerna
+<pre>
+<code>FROM debian:stretch-slim
+
+RUN apt-get update
+
+# shell form
+CMD echo "Hello world"
+ENTRYPOINT echo "Hello world"
+
+# exec form
+CMD ["/bin/echo", "Hello world"]
+ENTRYPOINT ["/bin/echo", "Hello world"]</code>
+</pre>
+</script>
+
+
+<!-- Slide -->
+<script data-role="slide" data-markdown type="text/html">
+<pre>
+<code>FROM debian:stretch-slim
+
+RUN apt-get update
+
+COPY script.bash /script.bash
+
+ENTRYPOINT ["/bin/bash", "-c", "/script.bash"]</code>
+</pre>
+</script>
+
+
+
+<!-- Slide -->
+<script data-role="slide" data-markdown type="text/html">
+Tredje form av CMD
+<pre>
+<code>FROM debian:stretch-slim
+
+RUN apt-get update
+
+ENTRYPOINT ["/bin/echo", "Hello"]
+
+#exec form!
+CMD ["world"]</code>
+</pre>
+<pre><code>$ docker run -it imagename Kenneth</code></pre>
+</script>
+
+
+
+<!-- Slide -->
+<script data-role="slide" data-markdown type="text/html">
+shell form av ENTRYPOINT ignorerar CMD & docker run
+<pre>
+<code>FROM debian:stretch-slim
+
+RUN apt-get update
+
+ENTRYPOINT echo Hello
+
+CMD ["world"]</code>
+</pre>
+<pre><code>$ docker run -it imagename Kenneth</code></pre>
+</script>
+
+
+
+<!-- Slide -->
+<script data-role="slide" data-markdown type="text/html">
+#ADD / COPY
+
+* Samma mål
+* ADD kan använda URL:er
+* ADD packar automatiskt upp till mapp (tar, gzip etc)
+* Inte om &lt;src&gt; är URL ^
+* Använd COPY
+</script>
+
+
+
+<!-- Slide -->
+<script data-role="slide" data-markdown type="text/html">
+#docker run options
+
+* Volymer (-v)
+    * &lt;outside&gt;:&lt;inside&gt;
+* port (-p)
+    * &lt;outside&gt;:&lt;inside&gt;
+<pre></code>$ docker run -p 8083:80 -v $(pwd)/example-site/:/var/www/html/ username/imagename:tag</code></pre>
+* Interaktiv terminal (-it)
+    * --interactive --tty
+* Rensa (--rm)
+</script>
+
+<script data-role="slide" data-markdown type="text/html">
+#Kursmomentet
+</script>
+
+<script data-role="slide" data-markdown type="text/html">
+#Lycka till!
+</script>
+
+
+
+
+<!-- include essential js-script -->
+<script src="../../js/mithril.min.js"></script>
+<script src="../../js/mithril-slideshow.js"></script>
+<!-- default to theme 3 -->
+<script>app.useTheme(3);</script>
+
+</html>
