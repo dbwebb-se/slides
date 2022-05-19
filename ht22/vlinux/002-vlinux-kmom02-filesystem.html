@@ -41,8 +41,8 @@
 
 <!-- Here comes the slides in order -->
 <script data-role="slide" data-markdown type="text/html">
-#vlinux - filsystem
-###Kenneth Lewenhagen, dbwebb
+# vlinux - filesystem
+### Kenneth Lewenhagen, dbwebb
 </script>
 
 
@@ -60,7 +60,7 @@
 
 <!-- Slide -->
 <script data-role="slide" data-markdown type="text/html">
-#Filstruktur
+# File structure
 
 <img src="img/ls.png" alt="ls">
 
@@ -70,10 +70,20 @@
 
 <!-- Slide -->
 <script data-role="slide" data-markdown type="text/html">
-#/bin
+# / (root)
+
+* Root of filesystem tree
+
+</script>
+
+
+
+<!-- Slide -->
+<script data-role="slide" data-markdown type="text/html">
+# /bin (binaries)
 
 * "Executables"
-* Tillgängliga för alla
+* Available for everyone
 * cp, rm, mv, ls
 
 </script>
@@ -82,12 +92,12 @@
 
 <!-- Slide -->
 <script data-role="slide" data-markdown type="text/html">
-#/boot
+# /boot
 
-* Konfiguration för kärnan och uppstart
-* initrd - temporärt filsystem
-* vmlinuz - komprimerad kärna
-* grub - sköter uppstarten av systemet
+* Configuration for kernel and boot
+* initrd - Temporary root filesystem
+* vmlinuz - Compressed bootable kernel
+* grub - manages system boot
 
 </script>
 
@@ -95,10 +105,10 @@
 
 <!-- Slide -->
 <script data-role="slide" data-markdown type="text/html">
-#/dev
+# /dev
 
-* Filer som pekar på enheter
-* Allt är en fil!
+* Files pointing on devices
+* Everything is a file
 * sd? = hdd
 * urandom
     * "environmental noise"
@@ -109,19 +119,9 @@
 
 <!-- Slide -->
 <script data-role="slide" data-markdown type="text/html">
-#/etc
+# /etc
 
-* Konfigurationsfiler för system/program
-
-</script>
-
-
-
-<!-- Slide -->
-<script data-role="slide" data-markdown type="text/html">
-#/home
-
-* Hemmakatalog för icke-root användare
+* Configuration files for system/programs
 
 </script>
 
@@ -129,20 +129,9 @@
 
 <!-- Slide -->
 <script data-role="slide" data-markdown type="text/html">
-#/lib, /lib32, /lib64
+# /home
 
-* lib-filer för systemet
-
-</script>
-
-
-
-<!-- Slide -->
-<script data-role="slide" data-markdown type="text/html">
-#/lost+found
-
-* Sparade filer vid krash
-* Inte röra
+* Home folders for non-root users
 
 </script>
 
@@ -150,20 +139,9 @@
 
 <!-- Slide -->
 <script data-role="slide" data-markdown type="text/html">
-#/media
+# /lib, /lib32, /lib64
 
-* Automatisk montering för vissa externa enheter
-* tex USB, CD-ROM
-
-</script>
-
-
-
-<!-- Slide -->
-<script data-role="slide" data-markdown type="text/html">
-#/mnt
-
-* Montering av filsystem, hdd
+* lib-files for system
 
 </script>
 
@@ -171,9 +149,10 @@
 
 <!-- Slide -->
 <script data-role="slide" data-markdown type="text/html">
-#/opt
+# /lost+found
 
-* Blandad mjukvara
+* Saved files at crash
+* Do not touch!
 
 </script>
 
@@ -181,9 +160,41 @@
 
 <!-- Slide -->
 <script data-role="slide" data-markdown type="text/html">
-#/proc
+# /media
 
-* virtuellt filsystem för resurser, processer etc
+* Automatic mounting for removable devices (ex. USB)
+
+</script>
+
+
+
+<!-- Slide -->
+<script data-role="slide" data-markdown type="text/html">
+# /mnt
+
+* Mounting of filesystem, hdds
+
+</script>
+
+
+
+<!-- Slide -->
+<script data-role="slide" data-markdown type="text/html">
+# /opt
+
+* Mixed third-party software, not via dpkg, apt
+
+</script>
+
+
+
+<!-- Slide -->
+<script data-role="slide" data-markdown type="text/html">
+# /proc
+
+* Virtual filesystem for resources, processes etc
+* Only exists when system is on
+* Information center for the kernel - communicates userspace
 * <code>$ cat /proc/1/limits</code>
 
 </script>
@@ -192,19 +203,9 @@
 
 <!-- Slide -->
 <script data-role="slide" data-markdown type="text/html">
-#/root
+# /root
 
-* Hemmakatalog för root-användaren
-
-</script>
-
-
-
-<!-- Slide -->
-<script data-role="slide" data-markdown type="text/html">
-#/sbin
-
-* /bin fast för sysadmin
+* Home folder for root-user
 
 </script>
 
@@ -212,9 +213,9 @@
 
 <!-- Slide -->
 <script data-role="slide" data-markdown type="text/html">
-#/tmp
+# /sbin
 
-* Temporär, raderas vid omstart
+* /bin but for sysadmin
 
 </script>
 
@@ -222,12 +223,22 @@
 
 <!-- Slide -->
 <script data-role="slide" data-markdown type="text/html">
-#/usr
+# /tmp
+
+* Temporary, erased at reboot
+
+</script>
+
+
+
+<!-- Slide -->
+<script data-role="slide" data-markdown type="text/html">
+# /usr
 
 * Mini-root (/)
-* Specifikt för användarens program
-* /usr/bin kör över /bin
-* $PATH tar /bin sist
+* Each users programs
+* /usr/bin runs over /bin
+* $PATH look in /bin last
 
 </script>
 
@@ -235,10 +246,10 @@
 
 <!-- Slide -->
 <script data-role="slide" data-markdown type="text/html">
-#/var
+# /var (variable)
 
-* Systemet skriver data under körning
-* /var/log/ - alla logg-filer
+* System writes data at runtime
+* /var/log/ - all logfiles
 
 </script>
 
@@ -253,7 +264,7 @@
 
 
 <script data-role="slide" data-markdown type="text/html">
-# Lycka till!
+# The end
 </script>
 
 
