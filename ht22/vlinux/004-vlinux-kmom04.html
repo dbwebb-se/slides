@@ -112,7 +112,7 @@ RUN / CMD / ENTRYPOINT
 <!-- Slide -->
 <script data-role="slide" data-markdown type="text/html">
 <pre>
-<code>FROM debian:stretch-slim
+<code>FROM ubuntu:22.04
 
 RUN apt-get update && \
     apt-get -y install apache2
@@ -127,7 +127,7 @@ CMD apachectl -D FOREGROUND</code>
 <script data-role="slide" data-markdown type="text/html">
 Exempel på de olika formerna
 <pre>
-<code>FROM debian:stretch-slim
+<code>FROM ubuntu:22.04
 
 RUN apt-get update
 
@@ -145,7 +145,7 @@ ENTRYPOINT ["/bin/echo", "Hello world"]</code>
 <!-- Slide -->
 <script data-role="slide" data-markdown type="text/html">
 <pre>
-<code>FROM debian:stretch-slim
+<code>FROM ubuntu:22.04
 
 RUN apt-get update
 
@@ -161,7 +161,7 @@ ENTRYPOINT ["/bin/bash", "-c", "/script.bash"]</code>
 <script data-role="slide" data-markdown type="text/html">
 Tredje form av CMD
 <pre>
-<code>FROM debian:stretch-slim
+<code>FROM ubuntu:22.04
 
 RUN apt-get update
 
@@ -179,7 +179,7 @@ CMD ["world"]</code>
 <script data-role="slide" data-markdown type="text/html">
 shell form av ENTRYPOINT ignorerar CMD & docker run
 <pre>
-<code>FROM debian:stretch-slim
+<code>FROM ubuntu:22.04
 
 RUN apt-get update
 
